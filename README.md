@@ -1,8 +1,10 @@
 # mongo_dataset
 
-Data from [1] \n
+Data from [Generating duplicate bug datasets][1]
 
 Just use `esmall` as a example.
+
+
 The codes are some simple preprocesses.
 
 
