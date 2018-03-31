@@ -38,10 +38,23 @@ def extract_bugrepo(file_path):
     dicList=[json.loads(line) for line in open(file_path)]
     res_list = []
     for dic in dicList:
-        res_list.append([dic['bug_id'], dic['product'], dic['description'], dic['bug_severity'],\
-                         dic['dup_id'], dic['short_desc'], dic['priority'], dic['version'],\
-                         dic['component'], dic['delta_ts'], dic['bug_status'], dic['creation_ts'],\
-                         dic['resolution']
+        bug_id       = dic['bug_id'] if dic['bug_id'] else ''
+        product      = dic['product'] if dic['product'] else ''
+        description  = dic['description'] if dic['description'] else ''
+        bug_severity = dic['bug_severity'] if dic['bug_severity'] else ''
+        dup_id       = dic['dup_id'] if dic['dup_id'] else ''
+        short_desc   = dic['short_desc'] if dic['short_desc'] else ''
+        priority     = dic['priority'] if dic['priority'] else ''
+        version      = dic['version'] if dic['version'] else ''
+        component    = dic['component'] if dic['component'] else ''
+        delta_ts     = dic['delta_ts'] if dic['delta_ts'] else ''
+        bug_status   = dic['bug_status'] if dic['bug_status'] else ''
+        creation_ts  = dic['creation_ts'] if dic['creation_ts'] else ''
+        resolution   = dic['resolution'] if dic['resolution'] else ''
+        
+        res_list.append([bug_id, product, description, bug_severity, dup_id,\
+                        short_desc, priority, version, component, delta_ts,\
+                        bug_status, creation_ts, resolution
                         ])
     res_list = pd.DataFrame(res_list, columns=['bug_id', 'product', 'description', 'bug_severity',
                                                'dup_id', 'summary', # change short_desc to summary
