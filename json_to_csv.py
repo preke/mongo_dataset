@@ -3,9 +3,12 @@ import numpy as np
 import json
 import traceback
 
-pair_path = 'esmall_pairs.json'
-bugrepo_path = 'esmall_clear.json'
+pair_path      = 'esmall_pairs.json'
+bugrepo_path   = 'esmall_clear.json'
 
+pair_topath    = 'esmall_pairs.csv'
+bugrepo_topath = 'esmall_bug_repos.csv'
+summary_topath = 'esmall_summary.csv'
 
 def get_pair_frame(file_path):
     dicList=[json.loads(line) for line in open(file_path)]
@@ -84,9 +87,9 @@ if __name__ == '__main__':
     pairs = get_pair_frame(pair_path)
     bug_repos = extract_bugrepo(bugrepo_path)
     summary = gen('summary', bug_repos, pairs)
-    pairs.to_csv('esmall_pairs.csv', index=False, encoding='GB18030')
-    bug_repos.to_csv('esmall_bug_repos.csv', index=False, encoding='GB18030')
-    summary.to_csv('esmall_summary.csv', index=False, encoding='GB18030')
+    pairs.to_csv(pair_topath, index=False, encoding='GB18030')
+    bug_repos.to_csv(bugrepo_topath, index=False, encoding='GB18030')
+    summary.to_csv(summary_topath, index=False, encoding='GB18030')
 
     
     
